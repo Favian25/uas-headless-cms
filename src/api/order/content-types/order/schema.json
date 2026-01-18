@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomorOrder": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "TanggalOrder": {
+      "type": "datetime"
+    },
+    "NamaPelanggan": {
+      "type": "string",
+      "required": true
+    },
+    "EmailPelanggan": {
+      "type": "email",
+      "required": true
+    },
+    "TeleponPelanggan": {
+      "type": "string"
+    },
+    "AlamatPengiriman": {
+      "type": "text"
+    },
+    "TotalHarga": {
+      "type": "biginteger",
+      "required": true
+    },
+    "StatusOrder": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Diproses",
+        "Dikirim",
+        "Selesai",
+        "Dibatalkan"
+      ]
+    },
+    "MetodePembayaran": {
+      "type": "enumeration",
+      "enum": [
+        "Transfer",
+        "COD",
+        "Debit/Credit"
+      ]
+    },
+    "Catatan": {
+      "type": "string"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "order"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "orders"
+    }
+  }
+}

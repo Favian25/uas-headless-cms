@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "suppliers",
+  "info": {
+    "singularName": "supplier",
+    "pluralName": "suppliers",
+    "displayName": "Supplier"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NamaSupplier": {
+      "type": "string",
+      "required": true
+    },
+    "EmailSupplier": {
+      "type": "email"
+    },
+    "TeleponSupplier": {
+      "type": "string"
+    },
+    "AlamatSupplier": {
+      "type": "text"
+    },
+    "Deskripsi": {
+      "type": "text"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "supplier"
+    }
+  }
+}

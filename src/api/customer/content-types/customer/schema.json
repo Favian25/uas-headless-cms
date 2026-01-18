@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NamaCustomer": {
+      "type": "string",
+      "required": true
+    },
+    "EmailCustomer": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "TeleponPelanggan": {
+      "type": "string"
+    },
+    "AlamatPelanggan": {
+      "type": "text"
+    },
+    "TanggalDaftar": {
+      "type": "date"
+    },
+    "TotalPembelian": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "JumlahOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "customer"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "customer"
+    }
+  }
+}
